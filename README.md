@@ -81,4 +81,6 @@ The following is an example of a file that contains a sudoku to solve:
 080506001
 ```
 
-The file to read should be a .txt file ,and the zeros represent an empty cell.
+The file to read should be a .txt file ,and the zeros represent an empty cell. 
+
+The 4 files that are inside the repository are examples of Sudokus that can be solved.
