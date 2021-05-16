@@ -9,23 +9,32 @@ public class Main {
     public static void main(String[] args) {
         String filename = "veryHard3x3.txt";
         try {
+            //File that contains the Sudoku. Should be a .txt file.
             File file = new File(filename);
+
+            //Represents the number of boxes on each row.
             int size = 3;
+            //Load the grid from the File.
             int[][] grid = loadSudoku(file, size);
 
+            //Creates a new Sudoku Object to solve it.
             Sudoku sudoku = new Sudoku(size, grid);
 
+            //Prints the grid before solving the Sudoku.
             System.out.println("Before Solve: ");
             printSudoku(sudoku);
 
-
+            //Register the time before solving.
             long startTime = System.nanoTime();
 
+            //Solves the Sudoku
             sudoku.solve();
 
+            //Register the time after solving and allows us to compute the time taken in nanoseconds.
             long endTime = System.nanoTime();
             System.out.println("Took "+(endTime - startTime) + " ns");
 
+            //Prints the Sudoku after solving it.
             System.out.println("After Solve: ");
             printSudoku(sudoku);
         }
@@ -34,6 +43,7 @@ public class Main {
         }
     }
 
+    //Load the 2D grid of the Sudoku from a file.
     private static int[][] loadSudoku(File file, int size) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
         int count = 0;
@@ -54,6 +64,7 @@ public class Main {
         return grid;
     }
 
+    //Method that prints the Sudoku in a grid form to the console.
     private static void printSudoku(Sudoku s) {
         int[][] grid = s.getGrid();
         int row = 0;
@@ -79,6 +90,7 @@ public class Main {
         }
     }
 
+    //Given the grid, returns a particular section of a particular row.
     private static int[] getSection(int[][] grid, int row, int startIndex, int endIndex) {
         int[] section = new int[endIndex - startIndex + 1];
 
